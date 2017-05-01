@@ -33,11 +33,13 @@
 						$hostname = "localhost";
 						$dbloginusername = "root";
 						$dbloginpassword = "3a92a667";
-						$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-						mysql_select_db("MarvelMarks");
+						$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword","MarvelMarks") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+					//	mysql_select_db("MarvelMarks");
 						
 						//ensure entered username does not already exist in db
-						$namecheck = mysql_query("SELECT username FROM Users WHERE username = '$username'");
+						$search = "SELECT username FROM Users WHERE username = '$username'";
+						$namecheck = mysqli_query($connect, $search);	
+					//	$namecheck = mysqli_query("SELECT username FROM Users WHERE username = '$username'");
 						$count = mysql_num_rows($namecheck);
 						if ($count > 0)
 						{

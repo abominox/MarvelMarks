@@ -10,11 +10,11 @@
 		$hostname = "localhost";
 		$dbloginusername = "root";
 		$dbloginpassword = "3a92a667";
-		$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-		mysql_select_db("MarvelMarks") or die("Could not find specified database!");
-		
-		$query = mysql_query("SELECT * FROM Users WHERE username='$username'");
-		
+		$connect = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword", 'MarvelMarks') or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+	//	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
+		$search="SELECT * FROM Users WHERE username='$username'";
+	//	$query = mysql_query("SELECT * FROM Users WHERE username='$username'");
+		$query= mysqli_query($connect, $search);
 		$numrows = mysql_num_rows($query);
 		
 		if ($numrows != 0)

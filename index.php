@@ -43,12 +43,17 @@
 	$hostname = "localhost";
 	$dbloginusername = "root";
 	$dbloginpassword = "3a92a667";
-	$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-	mysql_select_db("MarvelMarks");
+	$connect = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword","MarvelMarks") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+//	mysql_select_db("MarvelMarks");
  
 	//retrieve user bookmarks from db
-	$userID = mysql_query("SELECT id FROM URL WHERE id.....");
-	$bookmarks = mysql_query("SELECT url FROM products WHERE product = '$product'");
+	$searchID = "SELECT id FROM URL WHERE id.....");
+	$searchBookmarks = "SELECT url FROM products WHERE product = '$product'");
+	$userID = $mysqli_query($connect, $searchID);
+	$bookmarks = $mysqli_query($connect, $searchBookmarks);
+	
+//	$userID = mysql_query("SELECT id FROM URL WHERE id.....");
+//	$bookmarks = mysql_query("SELECT url FROM products WHERE product = '$product'");
  
  
  
