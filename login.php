@@ -29,7 +29,7 @@
 					//regenerate pwd hash
 					//$queryreg = mysql_query("INSERT INTO Users(id, username, password, email, date) VALUES ('', '$username','$password', '$email', '$date')");
 
-					//found corresponding user/pass in MySQL server, redirect to index.php
+					//found corresponding user/pass in MySQL server, redirect to home.php
 					header('Location: home.php');
 					$_SESSION['username'] = $username;
 				}

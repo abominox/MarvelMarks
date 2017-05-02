@@ -13,13 +13,12 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/bootstrap.css" rel="stylesheet">
+	  <link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/4-col-portfolio.css" rel="stylesheet">
-	<link href="css/index.css" rel="stylesheet">
-	
-	<link rel="stylesheet" type="text/css" href="thumnbnail.css" />
+	  <link rel="stylesheet" type="text/css" href="css/thumnbnail.css" />
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,14 +26,14 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
-	<script src="js/thumbnail.js" type="text/javascript"></script> 
+
+	<script src="js/thumbnail.js" type="text/javascript"></script>
 	<script>
 		//
 	</script>
-	
+
 	<noscript>
-		<h3>This website requires the use of Javascript to function properly. Please 
+		<h3>This website requires the use of Javascript to function properly. Please
 		consider using another browser/configuration.</h3>
 	</noscript>
 
@@ -44,9 +43,9 @@
 
 <?php
 	session_start();
-	
+
 	$username;
-	
+
 	if(!($_SESSION['username']))
 	{
 		die("You must be logged in to access this page! Please <a href='login.html'>login here.</a>");
@@ -55,7 +54,7 @@
 	{
 		$username = $_SESSION['username'];
 	}
-	
+
 	//create connection to db to retrieve user bookmarks later
 	$hostname = "localhost";
 	$dbloginusername = "root";
@@ -78,7 +77,7 @@
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav">				
+					<ul class="nav navbar-nav">
 						<li>
 							<button type="button" id = "" data-toggle="modal" data-target="#myModal">Add URL</button>
 						</li>
@@ -235,7 +234,7 @@
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="js/bootstrap.min.js"></script>
-		
+
 		<div id="myModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 

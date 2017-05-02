@@ -1,0 +1,11 @@
+#box {
+  width: 750px;
+  height: 450px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+canvas {
+  max-width: 100%;
+  max-height: 100%;
+}
