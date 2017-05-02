@@ -9,9 +9,11 @@ Dependencies:
  - MySQL
  - A MySQL Database
  - PHP 5.5
+ - PhantomJS
+ - PHP 5.5+
  
  Recommended:
- - Webserver (Apache, NGINX, etc.) on which to host MarvelMarks
+ - Web server (Apache, NGINX, etc.) on which to host MarvelMarks
  
  #### Todo
 Important:
@@ -19,9 +21,10 @@ Important:
  - Send password reset requests to listed user email.
  - Logically separate all project files into folders.
  - Replace "mysql" function calls with "mysqli" equivalents, as they have been deprecated.
+
 Secondary:
 - Add support for user bookmark folders.
-- Finish Python script for first-time user setup.
+- Finish Python script for first-time user setup (create requisite tables, rename DB login info)
  
  ##### Notes
  None yet.

@@ -4,19 +4,19 @@
 
 	$username = strtolower(strip_tags($_POST['username']));
 	$password = strip_tags($_POST['password']);
-	
+
 	if ($username && $password)
 	{
 		$hostname = "localhost";
 		$dbloginusername = "root";
-		$dbloginpassword = "3a92a667";
+		$dbloginpassword = "mirror2013";
 		$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
 		mysql_select_db("MarvelMarks") or die("Could not find specified database!");
-		
+
 		$query = mysql_query("SELECT * FROM Users WHERE username='$username'");
-		
+
 		$numrows = mysql_num_rows($query);
-		
+
 		if ($numrows != 0)
 		{
 			while ($row = mysql_fetch_assoc($query))
@@ -28,9 +28,9 @@
 				{
 					//regenerate pwd hash
 					//$queryreg = mysql_query("INSERT INTO Users(id, username, password, email, date) VALUES ('', '$username','$password', '$email', '$date')");
-					
-					//found corresponding user/pass in MySQL server, redirect to index.php
-					header('Location: index.php');
+
+					//found corresponding user/pass in MySQL server, redirect to home.php
+					header('Location: home.php');
 					$_SESSION['username'] = $username;
 				}
 				else
