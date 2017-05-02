@@ -1,40 +1,35 @@
-/* Without this class/container, the scaled iframes maintain
-   their massive (pre-scaled) dimensions */
-.preview {
-  width: 204px; height: 152px;
-  overflow: hidden;
-  display: inline-block;
-  position: relative;
+body {
+	
 }
 
-/* iframes are initially set large enough to get a good view
-   of the contained page. They are then scaled down to one-
-   tenth their original size */
-.preview iframe {
-  width: 1020px; height: 768px;
-  -webkit-transform: scale(.2); -webkit-transform-origin: 0 0;
-  -moz-transform: scale(.2); -moz-transform-origin: 0 0;
-  -ms-transform: scale(.2); -ms-transform-origin: 0 0;
-  -o-transform: scale(.2); -o-transform-origin: 0 0;
-  transform: scale(.2); transform-origin: 0 0;
+h1 {
+	
 }
 
-/* Prevents the user from interacting with the iframe page */
-.preview:after,
-.preview::after {
-  content: "";
-  display: block;
-  position: absolute;
-  width: 100%; height: 100%;
-  top: 0; left: 0;
+.contentBox {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	right: 50%;
+    width: 20%;
+    border: 3px solid white;
+	background: rgba(128, 128, 128, 0.5);
+    background-clip: content-box;
 }
 
-.clickableLink {
-	position:absolute; 
-	top:0; 
-	left:0; 
-	display:inline-block; 
-	width:500px; 
-	height:500px; 
-	z-index:5;
+video#bgvid { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -100;
+    -ms-transform: translateX(-50%) translateY(-50%);
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+    background: url(polina.jpg) no-repeat;
+    background-size: cover; 
 }
