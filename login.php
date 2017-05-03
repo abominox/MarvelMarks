@@ -9,9 +9,10 @@
 	{
 		$hostname = "localhost";
 		$dbloginusername = "root";
-		$dbloginpassword = "mirror2013";
-		$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-		mysql_select_db("MarvelMarks") or die("Could not find specified database!");
+		$dbloginpassword = "replacepass2";
+
+		mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+		mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks! Error: " . mysql_error());
 
 		$query = mysql_query("SELECT * FROM Users WHERE username='$username'");
 
@@ -46,7 +47,11 @@
 	}
 	else
 	{
-		//change this later to be a scripted, Android toast like notification, and have it appear on index.php instead
-		die("Please enter a username and a password:");
+		//change this later to be a JavaScript modal
+		// echo "<script language='javascript' type='text/javascript'>";
+		// echo "alert('Please enter a username and password!');";
+		// echo "</script>";
+		// die();
+		die("Please enter a username and a password!");
 	}
 ?>
