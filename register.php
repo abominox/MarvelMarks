@@ -32,9 +32,10 @@
 						//open db
 						$hostname = "localhost";
 						$dbloginusername = "root";
-						$dbloginpassword = "mirror2013";
-						$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-						mysql_select_db("MarvelMarks");
+						$dbloginpassword = "replacepass2";
+						
+						mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+						mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks!");
 						
 						//ensure entered username does not already exist in db
 						$namecheck = mysql_query("SELECT username FROM Users WHERE username = '$username'");
@@ -50,7 +51,7 @@
 						//send data to db
 						$queryreg = mysql_query("INSERT INTO Users(id, username, password, email, date) VALUES ('', '$username','$password', '$email', '$date')");
 						
-						die("You have successfully registered for MarvelMarks! <a href='login.html'>Return to login page.</a>");
+						die("You have successfully registered for MarvelMarks! <a href='index.html'>Return to login page.</a>");
 					}
 				}
 			}
@@ -65,45 +66,3 @@
 		}
 	}
 ?>
-
-<html>
-	<h1>Register for MarvelMarks</h1>
-	<form action='register.php' method='POST'>
-		<table>
-			<tr>
-				<td>
-					Username:
-				</td>
-				<td>
-					<input type='text' name='username' value='<?php echo $username ?>'>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					Password:
-				</td>
-				<td>
-					<input type='password' name='password' value='<?php echo $password ?>'>
-				</td>
-			</tr>
-			<tr>
-			<tr>
-				<td>
-					Confirm Password:
-				</td>
-				<td>
-					<input type='password' name='repeatpassword' value='<?php echo $repeatpassword ?>'>
-				</td>
-			</tr>
-				<td>
-					Email Address:
-				</td>
-				<td>
-					<input type='text' name='email' value='<?php echo $email ?>'>
-				</td>
-			</tr>
-		</table>
-			</p>
-			<input type='submit' name='submit' value='Register'>
-	</form>
-</html>

@@ -13,24 +13,15 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	  <link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/4-col-portfolio.css" rel="stylesheet">
-	  <link rel="stylesheet" type="text/css" href="css/thumnbnail.css" />
-    <link rel="stylesheet" type="text/css" href="css/home.css" />
+	<link rel="stylesheet" type="text/css" href="css/thumnbnail.css"/>
+    <link rel="stylesheet" type="text/css" href="css/home.css"/>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-	<script src="js/thumbnail.js" type="text/javascript"></script>
-	<script>
-		//
-	</script>
+	<!-- Custom JS -->
+	<script src="js/marvelmarks.js" type="text/javascript"></script>
 
 	<noscript>
 		<h3>This website requires the use of Javascript to function properly. Please
@@ -58,9 +49,26 @@
 	//create connection to db to retrieve user bookmarks later
 	$hostname = "localhost";
 	$dbloginusername = "root";
-	$dbloginpassword = "mirror2013";
-	$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+	$dbloginpassword = "replacepass2";
+
+	$conn = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
 	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
+
+  //retrieve user bookmarks, create boxes, create screenshots in boxes
+  $query = "SELECT url FROM URL where id=$username.id";
+  $result = $conn->query($query);
+  if ($result->num_rows > 0)
+  {
+    while ($row = $result->fetch_assoc())
+    {
+      $url = $row['url'];
+      echo
+      '<script src="js/html2canvas.js" type="text/javascript"></script>',
+      '<script src="js/marvelmarks.js" type="text/javascript"></script>',
+      $thumbnail = 'getScreenshot()'
+      ;
+    }
+  }
 ?>
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
