@@ -13,15 +13,17 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/bootstrap.css" rel="stylesheet">
+	  <link href="css/bootstrap.css" rel="stylesheet">
+
+    <!-- Bootstrap Imported CSS -->
+    <link href="css/4-col-portfolio.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/4-col-portfolio.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/thumnbnail.css"/>
+	  <link rel="stylesheet" type="text/css" href="css/thumnbnail.css"/>
     <link rel="stylesheet" type="text/css" href="css/home.css"/>
 
-	<!-- Custom JS -->
-	<script src="js/marvelmarks.js" type="text/javascript"></script>
+	  <!-- Custom JS -->
+	  <script src="js/marvelmarks.js" type="text/javascript"></script>
 
 	<noscript>
 		<h3>This website requires the use of Javascript to function properly. Please

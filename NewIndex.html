@@ -3,15 +3,21 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
+  <meta charset="utf-8">
 	<title>LOGIN</title>
-	<link rel="stylesheet" type="text/css" href="NewIndex.css" />
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- Imported CSS Stylesheets -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+  <link rel="stylesheet" type="text/css" href="custom.css"/>
 
-  <!-- Add poster="image.jpg" to video tag for display on screens with less than 800px instead of video -->
+  <!-- Imported JavaScript -->
 
-    <video playsinline autoplay muted loop poster="video/preview.png" id="bgvid">
+  <!-- Imported Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- HTML5 Background Video -->
+    <!-- "poster" displays image on screens smaller than 800px instead of bg video -->
+    <video playsinline autoplay muted loop poster="bg/preview.png" id="bgvid">
 			<source src=bg/1.mp4 type="video/mp4">
 		</video>
 
@@ -28,21 +34,24 @@
                 <form action="login.php"class="ng-pristine ng-valid" method="POST">
                   <div class ="form-content">
                     <div class ="form-group">
-                      <input type="text" name='username' class="form-control input-underline input-lg" placeholder="Enter Username">
+                      <input type="text" name='username' class="form-control input-underline input-lg" id="user-text-input" placeholder="Enter Username">
                     </div>
                     <div class ="form-group">
                       <input type ="password" name="password" class ="form-control input-underline input-lg" placeholder ="Enter Password">
                     </div>
                   </div>
                   <input type="submit" value="Log in" class ="btn btn-info btn-lg">
-                  </br>
                   <!-- The below works, but the link color should be changed to
                   white for visibility -->
+                  <!-- Change these later, these are not functioning buttons
+                and only clicking the text area of the links actually does anything -->
                   <div class="btn btn-info btn-lg">
                       <a href='register.html'>Register</a>
                   </div>
                   </br>
-                  <button href='forgot.php' class ="btn btn-info btn-lg">Forgot Password</button>
+                  <div class="btn btn-info btn-lg">
+                    <a href='forgot.php'>Forgot Password</a>
+                  </div>
                 </form>
              <col-md-4>
            </div>

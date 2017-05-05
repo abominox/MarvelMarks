@@ -1,3 +1,13 @@
+/* CSS Added By Christopher */
+
+a {
+  color: white !important;
+}
+
+#user-text-input {
+  color: white !important;
+}
+
 video#bgvid {
     position: fixed;
     top: 50%;
@@ -11,24 +21,31 @@ video#bgvid {
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url(polina.jpg) no-repeat;
+    background: url(bg/preview.png) no-repeat;
     background-size: cover;
 }
 
+/* CSS Added By Andrew / Bootstrap */
+
 body{
+  font-family: 'Roboto', sans-serif;
   height: 100%;
   width: 100%;
   margin-top: 20px;
 }
 .login-page{
-  position: relative;
-  margin: 0 auto;
-  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* Centers element on the page, no matter the size of the element */
+  transform: translate(-50%, -50%);
+  width: 30%;
   overflow: auto;
   background-color: rgba(128,128,128,0.4);
   text-align: :center;
   color:#fff;
   padding: 3em;
+  border-radius: 5px;
 }
 .user-avatar{
   width: 125px;
@@ -36,6 +53,7 @@ body{
 }
 .login-page h1{
   font-weight: 300;
+  font-family: 'Roboto', sans-serif;
 }
 .form-content{
   padding: 40px 0;
@@ -55,6 +73,7 @@ body{
   height: 46px;
   padding: 10px 16px;
   font-size: 18px;
+  color: white;
   line-height: 1.33333;
   border-radius: 0;
 }
@@ -67,18 +86,18 @@ body{
 }
 input[type=text]:-moz-placeholer,
 input[type=password]:-moz-placeholer{
-  color:#fff;
+  color: white;
 }
 
 input:-webkit-input-placeholder{
-  color:#fff !important;
+  color: white !important;
 }
 input:-moz-placeholder{
-  color: #fff !important;
+  color: white !important;
 }
 input::-moz-placeholder{
-  color:#fff !important;
+  color: white !important;
 }
 input:-ms-input-placeholder{
-  color:#fff !important;
+  color: white !important;
 }
