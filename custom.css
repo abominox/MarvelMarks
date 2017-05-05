@@ -6,11 +6,11 @@
 }
 
 a {
-  color: white !important;
+  color: white;
 }
 
 #user-text-input {
-  color: white !important;
+  color: white;
 }
 
 video#bgvid {
@@ -50,6 +50,7 @@ body{
   color: #fff;
   padding: 3em;
   border-radius: 5px;
+  border: 2px solid black;
 }
 
 .user-avatar{
@@ -88,10 +89,12 @@ body{
 }
 
 .btn-info{
+  margin-bottom: 10px;
   border-radius: 50px;
   box-shadow: 0 0 0 2px rgba(255,255,255,0.8)inset;
-  background:0 0;
-  border-color: transparent;
+  /* Button Background Color */
+  background: #717b7c;
+  border: 2px solid black;
   font-weight: 400;
 }
 
