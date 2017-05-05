@@ -55,20 +55,26 @@
 	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
 
   //retrieve user bookmarks, create boxes, create screenshots in boxes
-  $query = "SELECT url FROM URL where id=$username.id";
-  $result = $conn->query($query);
-  if ($result->num_rows > 0)
-  {
-    while ($row = $result->fetch_assoc())
-    {
-      $url = $row['url'];
-      echo
-      '<script src="js/html2canvas.js" type="text/javascript"></script>',
-      '<script src="js/marvelmarks.js" type="text/javascript"></script>',
-      $thumbnail = 'getScreenshot()'
-      ;
-    }
-  }
+  // $query = "SELECT url FROM URL where id=$username.id";
+  // $result = $conn->query($query);
+  //
+  // if ($result->num_rows > 0)
+  // {
+  //   while ($row = $result->fetch_assoc())
+  //   {
+  //     $url = $row['url'];
+  //     echo
+  //     '<script src="js/html2canvas.js" type="text/javascript"></script>',
+  //     '<script src="js/marvelmarks.js" type="text/javascript"></script>',
+  //     $thumbnail = 'getScreenshot()',
+  //     '<div class="col-md-3 portfolio-item">'
+  //       '<a href="#">'
+  //         '<img class="img-responsive" src="http://placehold.it/750x450" alt="">'
+  //       '</a>'
+  //     '</div>'
+  //     ;
+  //   }
+  // }
 ?>
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -87,7 +93,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
 						<li>
-							<button type="button" id = "" data-toggle="modal" data-target="#myModal">Add URL</button>
+							<button type="button" id="" data-toggle="modal" data-target="#myModal">Add URL</button>
 						</li>
 						<li>
 							<a href="logout.php">Logout</a>
