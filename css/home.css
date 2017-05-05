@@ -1,3 +1,7 @@
 #addURL {
 	padding-top: 10px;
 }
+
+.modal-open {
+    overflow: scroll;
+}
