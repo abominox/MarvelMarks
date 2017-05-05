@@ -1,5 +1,10 @@
 /* CSS Added By Christopher */
 
+.login-page h4 {
+  font-family: 'Roboto', sans-serif;
+  font-style: italic;
+}
+
 a {
   color: white !important;
 }
@@ -33,42 +38,46 @@ body{
   width: 100%;
   margin-top: 20px;
 }
+
 .login-page{
   position: fixed;
   top: 50%;
   left: 50%;
-  /* Centers element on the page, no matter the size of the element */
+  /* Centers class on the page, no matter the size of the class */
   transform: translate(-50%, -50%);
-  width: 30%;
-  overflow: auto;
   background-color: rgba(128,128,128,0.4);
-  text-align: :center;
-  color:#fff;
+  text-align: center;
+  color: #fff;
   padding: 3em;
   border-radius: 5px;
 }
+
 .user-avatar{
   width: 125px;
   height: 125px;
 }
+
 .login-page h1{
   font-weight: 300;
   font-family: 'Roboto', sans-serif;
 }
+
 .form-content{
   padding: 40px 0;
 }
+
 .login-page .form-content .input-underline{
   background: 0 0;
   border: none;
   box-shadow: none;
   border-bottom: 2px solid rgba(255, 255,255,0.4);
   border-radius: 0;
-
 }
+
 .login-page .form-content .input-underline{
   border-bottom: 2px solid #fff;
 }
+
 .input-lg{
   height: 46px;
   padding: 10px 16px;
@@ -77,6 +86,7 @@ body{
   line-height: 1.33333;
   border-radius: 0;
 }
+
 .btn-info{
   border-radius: 50px;
   box-shadow: 0 0 0 2px rgba(255,255,255,0.8)inset;
@@ -84,6 +94,7 @@ body{
   border-color: transparent;
   font-weight: 400;
 }
+
 input[type=text]:-moz-placeholer,
 input[type=password]:-moz-placeholer{
   color: white;
@@ -92,12 +103,15 @@ input[type=password]:-moz-placeholer{
 input:-webkit-input-placeholder{
   color: white !important;
 }
+
 input:-moz-placeholder{
   color: white !important;
 }
+
 input::-moz-placeholder{
   color: white !important;
 }
+
 input:-ms-input-placeholder{
   color: white !important;
 }
