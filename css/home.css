@@ -1,16 +1,12 @@
-#addURL {
-	padding-top: 10px;
+.pagination a:link {
+	color: black !important;
 }
 
 .navbar-brand {
 	font-weight: bold;
 }
 
-.navbar-brand a:link, a:visited {
-	color: silver !important;
-}
-
-.navbar-nav a:link, a:visited {
+.navbar-nav .navbar-brand a:link, a:visited {
   color: silver !important;
 }
 

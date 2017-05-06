@@ -135,7 +135,15 @@
         <h4 class="modal-title">Forgot Your Password?</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+        <form action="forgot.php"class="ng-pristine ng-valid" method="POST">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email Address:</label>
+            <input type="email" class="form-control" name="emailForgot" aria-describedby="emailHelp" placeholder="Enter Email Address">
+            <center><small class="form-text text-muted">Please check your spam folder.
+              If there was an account registered with the given email,
+              password reset instructions will be sent there.</small></center>
+          </div>
+          <center><input name="submit" type="submit" class="btn btn-primary"></input></center>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

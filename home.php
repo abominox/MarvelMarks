@@ -62,14 +62,24 @@
 	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
 
   //retrieve user bookmarks, create boxes, create site thumbnails in boxes
+  $user_id = mysql_query("SELECT id FROM Users WHERE username = '$username'");
+
+  $query = mysql_query("SELECT 'url' FROM 'URL' WHERE 'URL.id' = '$user_id'");
   // $query = "SELECT url FROM URL where id=$username.id";
-  // $result = $conn->query($query);
-  //
-  // if ($result->num_rows > 0)
-  // {
-  //   while ($row = $result->fetch_assoc())
-  //   {
-  //     $url = $row['url'];
+  $result = $conn->query($query);
+
+  $result_count = 0;
+  $num_bookmarks = mysql_fetch_assoc($query);
+  if ($result->num_rows > 0)
+  {
+    while ($row = $result->fetch_assoc())
+    {
+      $url = $row['url'];
+
+      //code to get the title of the webpage
+      $urlContents = file_get_contents($url);
+      preg_match("/<title>(.*)<\/title>/i", $urlContents, $matches);
+      $page_title = $matches[1];
   //     echo
   //     '<script src="js/html2canvas.js" type="text/javascript"></script>',
   //     '<script src="js/marvelmarks.js" type="text/javascript"></script>',
@@ -80,8 +90,8 @@
   //       '</a>'
   //     '</div>'
   //     ;
-  //   }
-  // }
+    }
+  }
 ?>
 
     <title><?php echo $page_title; ?></title>
@@ -137,9 +147,6 @@
 						<img class="img-responsive" src="js/screenshot.png" alt="">
 					</a>
 				</div>
-				<?php
-					$query = mysql_query("SELECT url FROM URL WHERE URL.id == Users.id");
-				?>
 				<div class="col-md-3 portfolio-item">
 					<a href="#">
 						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
@@ -265,7 +272,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Bookmark a New Website</h4>
+        <center><h4 class="modal-title">Bookmark a New Website</h4></center>
       </div>
       <div class="modal-body">
         <div class="form-group">

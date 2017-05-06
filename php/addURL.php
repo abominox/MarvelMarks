@@ -21,6 +21,11 @@
 	$row = mysql_fetch_assoc($query_1);
 	$user_id = $row['id'];
 
+	//encrypt entered URL
+
+
+	//store encrypted URL in DB, along with ID of user adding it
+
 	//"now()" gets the current date, time, year
 	$query = mysql_query("INSERT INTO URL (id, url, dateAdded) VALUES ('$user_id', '$url', now())");
 
@@ -36,9 +41,4 @@
 		echo mysql_error();
 		die("FAILED TO ADD URL");
 	}
-
-	//encrypt entered URL
-
-
-	//store encrypted URL in DB, along with ID of user adding it
 ?>
