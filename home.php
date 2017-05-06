@@ -6,9 +6,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="MarvelMarks">
-    <meta name="author" content="">
+    <meta name="description" content="The MarvelMarks Bookmark Manager">
 
+    <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
@@ -43,7 +43,7 @@
 
 	if(!($_SESSION['username']))
 	{
-		die("You must be logged in to access this page! Please <a href='login.html'>login here.</a>");
+		die("You must be logged in to access this page! Please <a href='index.html'>login here.</a>");
 	}
 	else
 	{
@@ -57,7 +57,8 @@
 	$dbloginusername = "root";
 	$dbloginpassword = "replacepass2";
 
-	$conn = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+	$conn = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword")
+  or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
 	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
 
   //retrieve user bookmarks, create boxes, create site thumbnails in boxes
@@ -96,7 +97,9 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#">MarvelMarks</a>
+          <div class="navbar-brand">
+            MarvelMarks
+          </div>
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -265,10 +268,15 @@
         <h4 class="modal-title">Bookmark a New Website</h4>
       </div>
       <div class="modal-body">
-        <form action = 'php/addURL.php' method='POST'>
-				URL: <input type='url' name='addedURL'><br>
-				<input type='submit' value='Submit'>
-		</form>
+        <div class="form-group">
+          <form action = "php/addURL.php" method="POST">
+            <label for="exampleInputEmail1">Site to Add:</label>
+            <center><input type="url" name="addedURL" class="form-control" aria-describedby="emailHelp" placeholder="Enter URL"></center>
+            <center><small class="form-text text-muted">We support most types of websites and web protocols.</small></center>
+            </br>
+            <center><button name="submit" type="submit" class="btn btn-primary">Submit</button></center>
+          </form>
+        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

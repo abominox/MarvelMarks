@@ -37,21 +37,28 @@
 				else
 				{
 					echo ("Incorrect Username/Password");
+					echo ("\nReturning to login page in 5 seconds...");
+					header("refresh: 5; url=index.html");
+					die();
 				}
 			}
 		}
 		else
 		{
-			die("That user does not exist!");
+			echo ("Incorrect Username/Password");
+			echo ("\nReturning to login page in 5 seconds...");
+			header("refresh: 5; url=index.html");
+			die();
 		}
 	}
 	else
 	{
-		//change this later to be a JavaScript modal
-		// echo "<script language='javascript' type='text/javascript'>";
-		// echo "alert('Please enter a username and password!');";
-		// echo "</script>";
-		// die();
-		die("Please enter a username and a password!");
+		// echo '<script type="text/javascript">confirm("Please enter a username and password.");</script>';
+		//echo '<script type="text/javascript">alert("Please enter a username and password.");</script>';
+		// header('Location: index.html');
+		echo ("Please enter a username and password.");
+		echo ("\nReturning to login page in 5 seconds...");
+		header("refresh: 5; url=index.html");
+		die();
 	}
 ?>

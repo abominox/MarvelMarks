@@ -1,23 +1,41 @@
 <?php
 	session_start();
+
+	//Imported JavaScript & CSS
+	// echo '<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>';
+	// echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>';
+	// echo '<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css"></script>';
+
 	$url = strip_tags($_POST['addedURL']);
-	//$date = date("Y-m-d H:i:s");
 
 	//open db
 	$hostname = "localhost";
 	$dbloginusername = "root";
-	$dbloginpassword = "mirror2013";
-	$connect = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+	$dbloginpassword = "replacepass2";
+	mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
 	mysql_select_db("MarvelMarks");
 
+	$username = $_SESSION['username'];
 
-	$userID = mysql_query("SELECT id FROM Users WHERE Users.username == '$_SESSION['username']'");
-	echo $_SESSION['username'];
-	echo userID;
+	$query = mysql_query("SELECT id FROM Users WHERE username = '$username'");
+	$row = mysql_fetch_assoc($query_1);
+	$user_id = $row['id'];
 
-	//"NOW()" gets the current date and time
-	$queryreg = mysql_query("INSERT INTO URL(id, url, date) VALUES ('$userID', '$url', NOW())");
-	die();
+	//"now()" gets the current date, time, year
+	$query = mysql_query("INSERT INTO URL (id, url, dateAdded) VALUES ('$user_id', '$url', now())");
+
+	if ($query)
+	{
+		// echo "<script type = 'text/javascript'>
+		// 	toastr.info('TEST');</script>";
+		header("Location: ../home.php");
+		die();
+	}
+	else
+	{
+		echo mysql_error();
+		die("FAILED TO ADD URL");
+	}
 
 	//encrypt entered URL
 
