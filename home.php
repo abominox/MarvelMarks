@@ -24,7 +24,7 @@
     <link rel="stylesheet" type="text/css" href="css/home.css"/>
 
 	  <!-- Custom JavaScript -->
-    <script src="js/html2canvas.js" type="text/javascript"></script>
+    <script src="vendor/html2canvas.js" type="text/javascript"></script>
 	  <script src="js/marvelmarks.js" type="text/javascript"></script>
 
 	<noscript>
