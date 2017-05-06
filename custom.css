@@ -1,11 +1,43 @@
 /* CSS Added By Christopher */
 
-.login-page h4 {
-  font-family: 'Roboto', sans-serif;
-  font-style: italic;
+.twitter-timeline {
+  float: left;
 }
 
-a {
+/* Removes border around button that appears when clicked */
+.login-page button:focus {
+    outline: none !important;
+}
+
+/* Removes border around button that appears when clicked */
+.login-page input:focus {
+  outline: none !important;
+}
+
+/* The following two CSS entries ensure a scrollbar does not appear
+and no shifting happens when a modal is opened. */
+body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+    margin-right: 0;
+}
+
+.modal {
+    overflow-y: auto;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.login-page h1 {
+  font-family: 'Lobster', 'Roboto', sans-serif !important;
+}
+
+.login-page h4 {
+  font-family: 'Roboto', sans-serif !important;
+  font-style: italic !important;
+}
+
+.login-page a:link, a:visited, a:hover, a:active {
   color: white;
 }
 
@@ -26,7 +58,7 @@ video#bgvid {
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
-    background: url(bg/preview.png) no-repeat;
+    background: url(media/preview.png) no-repeat;
     background-size: cover;
 }
 

@@ -2,6 +2,23 @@
 	padding-top: 10px;
 }
 
-.modal-open {
-    overflow: scroll;
+.navbar-brand {
+	font-weight: bold;
+}
+
+.navbar-brand a:link, a:visited {
+	color: silver !important;
+}
+
+.navbar-nav a:link, a:visited {
+  color: silver !important;
+}
+
+.navbar-nav a:hover {
+	color: white !important;
+}
+
+.navbar-nav a {
+	/* Removes border around link that appears when clicked */
+	outline: 0;
 }

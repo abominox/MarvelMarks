@@ -8,10 +8,13 @@
   easier operation, please change this later or adjust the formatting of
   the page elements to better suit this. -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The MarvelMarks Bookmark Manager">
 
 	<title>Login to MarvelMarks</title>
 
-  <!-- Imported CSS Stylesheets -->
+  <link rel="shortcut icon" href="media/favicon.ico" type="image/x-icon">
+
+  <!-- Imported CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
   <!-- Custom CSS -->
@@ -22,12 +25,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
   <!-- Imported Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <!-- HTML5 Background Video -->
     <!-- "poster" displays image on screens smaller than 800px instead of bg video -->
-    <video playsinline autoplay muted loop poster="bg/preview.png" id="bgvid">
-			<source src=bg/1.mp4 type="video/mp4">
+    <video playsinline autoplay muted loop poster="media/preview.png" id="bgvid">
+			<source src=media/1.mp4 type="video/mp4">
 		</video>
 
 </head>
@@ -35,6 +39,13 @@
 <html>
 
 	<body>
+    <!-- Embedded Twitter timeline for news updates from MarvelMarks Twitter account.
+    Please format the CSS better so it looks good -->
+    <!--
+    <a class="twitter-timeline" data-width="350" data-height="650" data-dnt="true" data-theme="dark" data-link-color="#19CF86"
+    href="https://twitter.com/TwitterDev">News</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    -->
+
     <center>
         <div class="container">
            <div class ="row login-page">
@@ -53,10 +64,15 @@
                   <input type="submit" value="Log in" class ="btn btn-info btn-lg">
 
                   <!-- Modal Buttons -->
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="registerModal">Register</button>
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#registerModal">Register</button>
                   </br>
-                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="forgotModal">Forgot Password</button>
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#forgotModal">Forgot Password</button>
                 </form>
+                </br>
+                <a href="#">About Us</a>
+                </br>
+                </br>
+                <a href="#">Terms of Service</a>
              <col-md-4>
            </div>
         </div>
@@ -72,13 +88,36 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Register for MarvelMarks</h4>
       </div>
       <div class="modal-body">
-        <p>Some text in the modal.</p>
+        <form action="register.php"class="ng-pristine ng-valid" method="POST">
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email Address:</label>
+            <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Confirm Email Address:</label>
+            <input type="email" class="form-control" name="emailConfirm" aria-describedby="emailHelp" placeholder="Confirm Email Address">
+            <center><small class="form-text text-muted">Please ensure you have access to this account before proceeding.</small></center>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Username:</label>
+            <input type="text" class="form-control" name="username" placeholder="Enter Username">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password:</label>
+            <input type="password" class="form-control" name="password" placeholder="Enter Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password:</label>
+            <input type="password" class="form-control" name="repeatpassword" placeholder="Confirm Password">
+          </div>
+          <center><input name="submit" type="submit" class="btn btn-primary"></input></center>
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -87,13 +126,13 @@
 
 <!-- Forgot Password Modal -->
 <div id="forgotModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-sm">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Modal Header</h4>
+        <h4 class="modal-title">Forgot Your Password?</h4>
       </div>
       <div class="modal-body">
         <p>Some text in the modal.</p>

@@ -4,13 +4,13 @@
 	$password = strip_tags($_POST['password']);
 	$repeatpassword = strip_tags($_POST['repeatpassword']);
 	$email = strip_tags($_POST['email']);
-	$date = date("Y-m-d");
-	
+	$repeat_email = strip_tags($_POST['emailConfirm']); //WE DONT DO ANYTHING WITH THIS YET, ADD EMAIL CONFIRM FUNC LATER
+
 	if ($submit)
 	{
-		if ($username && $password && $repeatpassword && $email && $date)
+		if ($username && $password && $repeatpassword && $email)
 		{
-			
+
 			if ($password == $repeatpassword)
 			{
 				if (strlen($username) > 25)
@@ -33,10 +33,10 @@
 						$hostname = "localhost";
 						$dbloginusername = "root";
 						$dbloginpassword = "replacepass2";
-						
+
 						mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
 						mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks!");
-						
+
 						//ensure entered username does not already exist in db
 						$namecheck = mysql_query("SELECT username FROM Users WHERE username = '$username'");
 						$count = mysql_num_rows($namecheck);
@@ -44,14 +44,21 @@
 						{
 							die("An account with this username already exists, please enter a new username.");
 						}
-						
+
 						//hashing password using bcrypt after successfully registering user
 						$password = password_hash($password, PASSWORD_DEFAULT);
-						
+
 						//send data to db
-						$queryreg = mysql_query("INSERT INTO Users(id, username, password, email, date) VALUES ('', '$username','$password', '$email', '$date')");
-						
-						die("You have successfully registered for MarvelMarks! <a href='index.html'>Return to login page.</a>");
+						$query = mysql_query("INSERT INTO Users (id, username, password, email, dateRegistered) VALUES ('', '$username','$password', '$email', now())");
+
+						if ($query)
+						{
+							die("You have successfully registered for MarvelMarks! <a href='index.html'>Return to login page.</a>");
+						}
+						else
+						{
+							die("FAILED TO ADD USER TO MARVELMARKS!");
+						}
 					}
 				}
 			}
