@@ -134,9 +134,15 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Forgot Your Password?</h4>
       </div>
-      <div class="modal-body">
-        <p>Some text in the modal.</p>
-      </div>
+	  <div class="modal-body">	
+	   <form action="reset.php" method="POST">
+	      <div class="form-group">
+       		 <label for="exampleInputEmail1">Email Address:</label>
+		 <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter Email Address">
+	      </div> 
+	   <center><input name="submit" type="submit"class="btn btn-primary"></input></center>
+	</form>
+	</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

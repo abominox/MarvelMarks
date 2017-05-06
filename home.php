@@ -57,9 +57,12 @@
 	$dbloginusername = "root";
 	$dbloginpassword = "replacepass2";
 
-	$conn = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword")
+//	$conn = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword")
   or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
+//	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
+
+	$conn = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword","MarvelMarks") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+	
 
   //retrieve user bookmarks, create boxes, create site thumbnails in boxes
   // $query = "SELECT url FROM URL where id=$username.id";
@@ -138,7 +141,9 @@
 					</a>
 				</div>
 				<?php
-					$query = mysql_query("SELECT url FROM URL WHERE URL.id == Users.id");
+				//$query = mysql_query("SELECT url FROM URL WHERE URL.id == Users.id");
+				$searchURL = "SELECT url FROM URL WHERE URL.id == Users.id";
+				$query = mysqli_query($conn,$searchURL);
 				?>
 				<div class="col-md-3 portfolio-item">
 					<a href="#">
