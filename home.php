@@ -6,23 +6,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="MarvelMarks">
     <meta name="author" content="">
 
-    <title>MarvelMarks</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-	  <link href="css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
-    <!-- Bootstrap Imported CSS -->
+    <!-- Bootstrap Template CSS -->
     <link href="css/4-col-portfolio.css" rel="stylesheet">
 
+    <!-- Bootstrap Imported JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <!-- Custom CSS -->
-	  <link rel="stylesheet" type="text/css" href="css/thumnbnail.css"/>
     <link rel="stylesheet" type="text/css" href="css/home.css"/>
 
-	  <!-- Custom JS -->
+	  <!-- Custom JavaScript -->
+    <script src="js/html2canvas.js" type="text/javascript"></script>
 	  <script src="js/marvelmarks.js" type="text/javascript"></script>
 
 	<noscript>
@@ -48,6 +50,8 @@
 		$username = $_SESSION['username'];
 	}
 
+  $page_title = $username . "'s Bookmarks";
+
 	//create connection to db to retrieve user bookmarks later
 	$hostname = "localhost";
 	$dbloginusername = "root";
@@ -56,7 +60,7 @@
 	$conn = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
 	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
 
-  //retrieve user bookmarks, create boxes, create screenshots in boxes
+  //retrieve user bookmarks, create boxes, create site thumbnails in boxes
   // $query = "SELECT url FROM URL where id=$username.id";
   // $result = $conn->query($query);
   //
@@ -78,6 +82,9 @@
   //   }
   // }
 ?>
+
+    <title><?php echo $page_title; ?></title>
+
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container">
@@ -94,9 +101,9 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li>
-							<button type="button" id="" data-toggle="modal" data-target="#myModal">Add URL</button>
-						</li>
+            <li>
+              <a href="#" data-toggle="modal" data-target="#addURLModal">Add URL</a>
+            </li>
 						<li>
 							<a href="logout.php">Logout</a>
 						</li>
@@ -236,7 +243,9 @@
 			<footer>
 				<div class="row">
 					<div class="col-lg-12">
-						<p>Contribute to the Development of this Web Application on <a href="https://github.com/RaxEmRemy/MarvelMarks">GitHub</a></p>
+						<!--
+            <p>Contribute to the Development of this Web Application on <a href="https://github.com/RaxEmRemy/MarvelMarks">GitHub</a></p>
+            -->
 					</div>
 				</div>
 				<!-- /.row -->
@@ -245,13 +254,8 @@
 		</div>
 		<!-- /.container -->
 
-		<!-- jQuery -->
-		<script src="js/jquery.js"></script>
-
-		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
-
-		<div id="myModal" class="modal fade" role="dialog">
+    <!-- Add URL Modal -->
+		<div id="addURLModal" class="modal fade" role="dialog">
 		<div class="modal-dialog">
 
     <!-- Modal content-->

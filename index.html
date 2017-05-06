@@ -1,17 +1,32 @@
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-	<title>LOGIN</title>
-	<link rel="stylesheet" type="text/css" href="css/index.css" />
-  	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
- 	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <meta charset="utf-8">
 
-  <!-- Add poster="image.jpg" to video tag for display on screens with less than 800px instead of video
-		Videos obtained from http://www.wedistill.io/videos free for personal and commercial use-->
-		<video playsinline autoplay muted loop poster="video/preview.png"id="bgvid">
+  <!-- Quick and dirty solution to open maximized on mobile devices for
+  easier operation, please change this later or adjust the formatting of
+  the page elements to better suit this. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Login to MarvelMarks</title>
+
+  <!-- Imported CSS Stylesheets -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="custom.css"/>
+
+  <!-- Imported JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <!-- Imported Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+    <!-- HTML5 Background Video -->
+    <!-- "poster" displays image on screens smaller than 800px instead of bg video -->
+    <video playsinline autoplay muted loop poster="bg/preview.png" id="bgvid">
 			<source src=bg/1.mp4 type="video/mp4">
 		</video>
 
@@ -20,20 +35,74 @@
 <html>
 
 	<body>
- 
-		<div class="contentBox">
-			<center>
-				<h1 class = "red-text">Welcome to </br>Marvel Marks</h1>
-			</center>
-			<form action = 'login.php' method='POST'>
-				<center>Username: <input type='text' name='username'><br></center>
-				<center>Password: <input type='password' name='password'><br></center>
-				<center><input type='submit' value='Log in'></center>
-			</form>
-			<center><p>Don't have an account? <a href='register.html'>Click here to register.</a></p></center>
-      <center><p><a href='forgot.php'>Forgot Password</a></p></center>
-		</div>
-  
+    <center>
+        <div class="container">
+           <div class ="row login-page">
+             <col -md-4 class="col-md4 col-lg-4 col-md-offset-4 col-lg-offset-4">
+                <h1>MarvelMarks</h1>
+                <h4>A Secure, Always Online Bookmark Manager<h4>
+                <form action="login.php"class="ng-pristine ng-valid" method="POST">
+                  <div class ="form-content">
+                    <div class ="form-group">
+                      <input type="text" name='username' class="form-control input-underline input-lg" id="user-text-input" placeholder="Enter Username">
+                    </div>
+                    <div class ="form-group">
+                      <input type ="password" name="password" class ="form-control input-underline input-lg" placeholder ="Enter Password">
+                    </div>
+                  </div>
+                  <input type="submit" value="Log in" class ="btn btn-info btn-lg">
+
+                  <!-- Modal Buttons -->
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="registerModal">Register</button>
+                  </br>
+                  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="forgotModal">Forgot Password</button>
+                </form>
+             <col-md-4>
+           </div>
+        </div>
+  </center>
 	</body>
+
+
+<!-- Registration Modal -->
+<div id="registerModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Forgot Password Modal -->
+<div id="forgotModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 </html>
