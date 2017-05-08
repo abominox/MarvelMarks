@@ -33,13 +33,14 @@
 						$hostname = "localhost";
 						$dbloginusername = "root";
 						$dbloginpassword = "replacepass2";
-
-						mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-						mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks!");
-
+						$connect = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword","MarvelMarks") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+					//	mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+					//	mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks!");
+						$search = "SELECT username FROM Users WHERE username = '$username'";
+						$namecheck = mysqli_query($connect, $search);
 						//ensure entered username does not already exist in db
-						$namecheck = mysql_query("SELECT username FROM Users WHERE username = '$username'");
-						$count = mysql_num_rows($namecheck);
+					//	$namecheck = mysql_query("SELECT username FROM Users WHERE username = '$username'");
+						$count = mysqli_num_rows($namecheck);
 						if ($count > 0)
 						{
 							die("An account with this username already exists, please enter a new username.");
@@ -49,7 +50,7 @@
 						$password = password_hash($password, PASSWORD_DEFAULT);
 
 						//send data to db
-						$query = mysql_query("INSERT INTO Users (id, username, password, email, dateRegistered) VALUES ('', '$username','$password', '$email', now())");
+						$query = mysqli_query($conn,"INSERT INTO Users (id, username, password, email, dateRegistered) VALUES ('', '$username','$password', '$email', now())");
 
 						if ($query)
 						{

@@ -10,17 +10,20 @@
 		$hostname = "localhost";
 		$dbloginusername = "root";
 		$dbloginpassword = "replacepass2";
+		$connect = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword", 'MarvelMarks') or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+		$search="SELECT * FROM Users WHERE username='$username'";
+		$query= mysqli_query($connect, $search);
+		$numrows = mysqli_num_rows($query);
+//		mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+//		mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks! Error: " . mysql_error());
 
-		mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-		mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks! Error: " . mysql_error());
+//		$query = mysql_query("SELECT * FROM Users WHERE username='$username'");
 
-		$query = mysql_query("SELECT * FROM Users WHERE username='$username'");
-
-		$numrows = mysql_num_rows($query);
+//		$numrows = mysql_num_rows($query);
 
 		if ($numrows != 0)
 		{
-			while ($row = mysql_fetch_assoc($query))
+			while ($row = mysqli_fetch_assoc($query))
 			{
 				$dbusername = $row['username'];
 				$dbpassword = $row['password'];
