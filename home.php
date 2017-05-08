@@ -50,45 +50,46 @@
 		$username = $_SESSION['username'];
 	}
 
-  $page_title = $username . "'s Bookmarks";
-
 	//create connection to db to retrieve user bookmarks later
 	$hostname = "localhost";
 	$dbloginusername = "root";
 	$dbloginpassword = "replacepass2";
 
-	$conn = mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword")
+	$conn = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword", "MarvelMarks")
   or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-	mysql_select_db("MarvelMarks") or die("Could not find specified database!");
-
-  //retrieve user bookmarks, create boxes, create site thumbnails in boxes
-  $user_id = mysql_query("SELECT id FROM Users WHERE username = '$username'");
-
-  $query = mysql_query("SELECT url FROM URL WHERE id = '$user_id' ORDER BY dateAdded");
 
   // $result = $conn->query($query);
   $result_count = 0;
-  $num_bookmarks = mysql_fetch_assoc($query);
 
-  if ($num_bookmarks > 0)
+  //retrieve user bookmarks, create boxes, create site thumbnails in boxes
+  $user_id = mysqli_fetch_assoc(mysqli_query($conn, "SELECT id FROM Users WHERE username = '$username'"));
+
+  $query = "SELECT * FROM URL WHERE id = 7 ORDER BY `URL`.`dateAdded` DESC";
+
+  $result = $conn->query($query);
+  if ($result->num_rows > 0)
   {
-    while ($row = mysql_fetch_assoc($query));
+    while ($row = $result->fetch_assoc($query));
     {
-      $url = $row['url'];
-
+      echo $row["url"];
       echo '<div class="row">';
       echo '<div class="col-md-3 portfolio-item">';
-      echo "<a href='$url'>";
-      echo "<img src='images/books/".$image."' class='picture' />";
-      echo '<img class="img-responsive" src="js/screenshot.png" alt="http://placehold.it/750x450">';
-      echo '</a>';
+      echo "<a href=" . $row["url"] . ">TEST LINK</a>";
+
+      echo $username;
+      echo $user_id;
+      echo '<a href=" . $row["url"] . "><img class="img-responsive" src="http://xiostorage.com/wp-content/uploads/2015/10/test.png" alt="http://placehold.it/750x450"></a>';
       echo '</div>';
+      echo '</div>';
+
+      $result_count++;
 
       //code to get the title of the webpage
       // $urlContents = file_get_contents($url);
       // preg_match("/<title>(.*)<\/title>/i", $urlContents, $matches);
       // $page_title = $matches[1];
 
+      //handle pagination here
 
   //     echo
   //     '<script src="js/html2canvas.js" type="text/javascript"></script>',
@@ -102,9 +103,13 @@
   //     ;
     }
   }
+  else
+  {
+    //add code here for if the user has not added any bookmarks yet
+  }
 ?>
 
-    <title><?php echo $page_title; ?></title>
+    <title><?php echo $_SESSION['username'] . "'s Bookmarks";; ?></title>
 
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -264,7 +269,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<!--
-            <p>Contribute to the Development of this web application on 
+            <p>Contribute to the Development of this web application on
             <a href="https://github.com/RaxEmRemy/MarvelMarks">GitHub</a>
             <img src="https://cdn1.iconfinder.com/data/icons/iconza-circle-social/64/697061-github-128.png" height="" width=""></p>
             -->
