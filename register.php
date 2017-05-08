@@ -8,24 +8,31 @@
 
 	if ($submit)
 	{
-		if ($username && $password && $repeatpassword && $email)
+		if ($username && $password && $repeatpassword && $email && $repeat_email)
 		{
-
+			if ($email  != $repeat_email)
+			{
+				echo "Please make sure your email addresses match.";
+				die();
+			}
 			if ($password == $repeatpassword)
 			{
 				if (strlen($username) > 25)
 				{
 					echo "Length of username must not exceed 25 characters!";
+					die();
 				}
 				if (strlen($email) > 50)
 				{
 					echo "Length of email address must not exceed 50 characters!";
+					die();
 				}
 				else
 				{
 					if (strlen($password) > 25 || strlen($password) < 6)
 					{
 						echo "Password must be between 6 and 25 characters!";
+						die();
 					}
 					else
 					{

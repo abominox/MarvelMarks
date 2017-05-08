@@ -28,6 +28,7 @@
 				if ($username == $dbusername && password_verify($password, $dbpassword))
 				{
 					//regenerate pwd hash
+					// if (password_needs_rehash($dbpassword, PASSWORD_DEFAULT))
 					//$queryreg = mysql_query("INSERT INTO Users(id, username, password, email, date) VALUES ('', '$username','$password', '$email', '$date')");
 
 					//found corresponding user/pass in MySQL server, redirect to home.php

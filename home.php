@@ -64,22 +64,32 @@
   //retrieve user bookmarks, create boxes, create site thumbnails in boxes
   $user_id = mysql_query("SELECT id FROM Users WHERE username = '$username'");
 
-  $query = mysql_query("SELECT 'url' FROM 'URL' WHERE 'URL.id' = '$user_id'");
-  // $query = "SELECT url FROM URL where id=$username.id";
-  $result = $conn->query($query);
+  $query = mysql_query("SELECT url FROM URL WHERE id = '$user_id' ORDER BY dateAdded");
 
+  // $result = $conn->query($query);
   $result_count = 0;
   $num_bookmarks = mysql_fetch_assoc($query);
-  if ($result->num_rows > 0)
+
+  if ($num_bookmarks > 0)
   {
-    while ($row = $result->fetch_assoc())
+    while ($row = mysql_fetch_assoc($query));
     {
       $url = $row['url'];
 
+      echo '<div class="row">';
+      echo '<div class="col-md-3 portfolio-item">';
+      echo "<a href='$url'>";
+      echo "<img src='images/books/".$image."' class='picture' />";
+      echo '<img class="img-responsive" src="js/screenshot.png" alt="http://placehold.it/750x450">';
+      echo '</a>';
+      echo '</div>';
+
       //code to get the title of the webpage
-      $urlContents = file_get_contents($url);
-      preg_match("/<title>(.*)<\/title>/i", $urlContents, $matches);
-      $page_title = $matches[1];
+      // $urlContents = file_get_contents($url);
+      // preg_match("/<title>(.*)<\/title>/i", $urlContents, $matches);
+      // $page_title = $matches[1];
+
+
   //     echo
   //     '<script src="js/html2canvas.js" type="text/javascript"></script>',
   //     '<script src="js/marvelmarks.js" type="text/javascript"></script>',
@@ -254,7 +264,9 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<!--
-            <p>Contribute to the Development of this Web Application on <a href="https://github.com/RaxEmRemy/MarvelMarks">GitHub</a></p>
+            <p>Contribute to the Development of this web application on 
+            <a href="https://github.com/RaxEmRemy/MarvelMarks">GitHub</a>
+            <img src="https://cdn1.iconfinder.com/data/icons/iconza-circle-social/64/697061-github-128.png" height="" width=""></p>
             -->
 					</div>
 				</div>
