@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<?php
+  session_start();
+
+  $username;
+
+  if(!($_SESSION['username']))
+  {
+    die("You must be logged in to access this page! Please <a href='index.html'>login here.</a>");
+  }
+  else
+  {
+    $username = $_SESSION['username'];
+  }
+?>
+
 <head>
 
     <meta charset="utf-8">
@@ -35,78 +50,6 @@
 </head>
 
 <body>
-
-<?php
-	session_start();
-
-	$username;
-
-	if(!($_SESSION['username']))
-	{
-		die("You must be logged in to access this page! Please <a href='index.html'>login here.</a>");
-	}
-	else
-	{
-		$username = $_SESSION['username'];
-	}
-
-  //create connection to db to retrieve user bookmarks later
-  $hostname = "localhost";
-  $dbloginusername = "root";
-  $dbloginpassword = "replacepass2";
-
-  $link = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword", "MarvelMarks")
-  or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-
-  $id_query = "SELECT id FROM Users WHERE username = '$username'";
-  $id_result = $link->query($id_query);
-  $id_row = $id_result->fetch_assoc();
-  $user_id = $id_row['id'];
-
-  $site_query = "SELECT * FROM URL WHERE id = '$user_id' ORDER BY `URL`.`dateAdded` DESC";
-
-  $site_result = $link->query($site_query);
-  if ($site_result->num_rows > 0)
-  {
-    while ($site_row = $site_result->fetch_assoc())
-    {
-      echo $site_row['id'];
-      echo $site_row['url'];
-
-      echo '<div class="row">';
-      echo '<div class="col-md-3 portfolio-item">';
-      echo '<a href="'.$row['url'].'"><img class="img-responsive" src="http://xiostorage.com/wp-content/uploads/2015/10/test.png" alt="http://placehold.it/750x450"></a>';
-      echo '</div>';
-      echo '</div>';
-
-      $result_count++;
-    }
-  }
-
-      //code to get the title of the webpage
-      // $urlContents = file_get_contents($url);
-      // preg_match("/<title>(.*)<\/title>/i", $urlContents, $matches);
-      // $page_title = $matches[1];
-
-      //handle pagination here
-
-  //     echo
-  //     '<script src="js/html2canvas.js" type="text/javascript"></script>',
-  //     '<script src="js/marvelmarks.js" type="text/javascript"></script>',
-  //     $thumbnail = 'getScreenshot()',
-  //     '<div class="col-md-3 portfolio-item">'
-  //       '<a href="#">'
-  //         '<img class="img-responsive" src="http://placehold.it/750x450" alt="">'
-  //       '</a>'
-  //     '</div>'
-  //     ;
-    }
-  }
-  else
-  {
-    //add code here for if the user has not added any bookmarks yet
-  }
-?>
 
     <title><?php echo $_SESSION['username'] . "'s Bookmarks";; ?></title>
 
@@ -154,131 +97,124 @@
 			</div>
 			<!-- /.row -->
 
-			<!-- Projects Row -->
-			<div class="row">
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="js/screenshot.png" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-			</div>
-			<!-- /.row -->
+    <?php
+      //create connection to db to retrieve user bookmarks later
+      $hostname = "localhost";
+      $dbloginusername = "root";
+      $dbloginpassword = "replacepass2";
 
-			<!-- Projects Row -->
-			<div class="row">
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-			</div>
-			<!-- /.row -->
+      $link = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword", "MarvelMarks")
+      or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
 
-			<!-- Projects Row -->
-			<div class="row">
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-				<div class="col-md-3 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="http://placehold.it/750x450" alt="">
-					</a>
-				</div>
-			</div>
-			<!-- /.row -->
+      $id_query = "SELECT id FROM Users WHERE username = '$username'";
+      $id_result = $link->query($id_query);
+      $id_row = $id_result->fetch_assoc();
+      $user_id = $id_row['id'];
 
-			<hr>
+      $site_query = "SELECT * FROM URL WHERE id = '$user_id' ORDER BY `URL`.`dateAdded` DESC";
 
-			<!-- Pagination -->
-			<div class="row text-center">
-				<div class="col-lg-12">
-					<ul class="pagination">
-						<li>
-							<a href="#">&laquo;</a>
-						</li>
-						<li class="active">
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">&raquo;</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<!-- /.row -->
+      $site_result = $link->query($site_query);
+      if ($site_result->num_rows > 0)
+      {
+        echo '<div class="container">';
+    ?>
 
-			<hr>
+        <?php
+        $result_count = 0;
+        //setting up the first row before the loop
+        echo '<div class="row">';
+        while ($site_row = $site_result->fetch_assoc())
+        {
+          echo '<div class="col-md-3 portfolio-item">';
+          echo '<a href="'.$site_row['url'].'"><img class="img-responsive" src="js/screenshot.png" alt="http://placehold.it/750x450"></a>';
 
-			<!-- Footer -->
-			<footer>
-				<div class="row">
-					<div class="col-lg-12">
-						<!--
-            <p>Contribute to the Development of this web application on
-            <a href="https://github.com/RaxEmRemy/MarvelMarks">GitHub</a>
-            <img src="https://cdn1.iconfinder.com/data/icons/iconza-circle-social/64/697061-github-128.png" height="" width=""></p>
-            -->
-					</div>
-				</div>
-				<!-- /.row -->
-			</footer>
+          //code to insert the bookmarked page's title under the thumbnail
+          echo '</br>';
+          $urlContents = file_get_contents($site_row['url']);
+          preg_match("/<title>(.*)<\/title>/i", $urlContents, $matches);
+          $page_title = $matches[1];
+          echo $page_title;
 
-		</div>
-		<!-- /.container -->
+          echo '</div>';
+          $result_count++;
+
+          if ($result_count == 4)
+          {
+            //stops the current row after four bookmarks, beginning the next
+            echo '</div>';
+            echo '<div class="row">';
+          }
+        }
+        //end the container div at the bottom of the page
+        echo '</div>';
+        //handle pagination here
+        //below is the HTML for this template's pagination, adapt this to
+        //paginate based on number of db entries
+        //EX: after "n" full rows of results, paginate
+        // <!-- Pagination -->
+  			// <div class="row text-center">
+  			// 	<div class="col-lg-12">
+  			// 		<ul class="pagination">
+  			// 			<li>
+  			// 				<a href="#">&laquo;</a>
+  			// 			</li>
+  			// 			<li class="active">
+  			// 				<a href="#">1</a>
+  			// 			</li>
+  			// 			<li>
+  			// 				<a href="#">2</a>
+  			// 			</li>
+  			// 			<li>
+  			// 				<a href="#">3</a>
+  			// 			</li>
+  			// 			<li>
+  			// 				<a href="#">4</a>
+  			// 			</li>
+  			// 			<li>
+  			// 				<a href="#">5</a>
+  			// 			</li>
+  			// 			<li>
+  			// 				<a href="#">&raquo;</a>
+  			// 			</li>
+  			// 		</ul>
+  			// 	</div>
+  			// </div>
+  			// <!-- /.row -->
+
+    //     echo
+    //     '<script src="js/html2canvas.js" type="text/javascript"></script>',
+    //     '<script src="js/marvelmarks.js" type="text/javascript"></script>',
+    //     $thumbnail = 'getScreenshot()',
+    //     '<div class="col-md-3 portfolio-item">'
+    //       '<a href="#">'
+    //         '<img class="img-responsive" src="http://placehold.it/750x450" alt="">'
+    //       '</a>'
+    //     '</div>'
+    //     ;
+        ?>
+        <hr>
+
+  			<!-- Footer -->
+  			<footer>
+  				<div class="row">
+  					<div class="col-lg-12">
+            <center>
+              <p>Contribute to the Development of this web application on
+              <a href="https://github.com/RaxEmRemy/MarvelMarks">GitHub</a>
+              <img src="media/git-icon.png" height="" width="">
+            </center>
+  					</div>
+  				</div>
+  				<!-- /.row -->
+  			</footer>
+
+      <?php
+      }
+      else
+      {
+        echo '<center><h2>You have not added any bookmarks yet</h2></center>';
+      }
+      ?>
 
     <!-- Add URL Modal -->
 		<div id="addURLModal" class="modal fade" role="dialog">

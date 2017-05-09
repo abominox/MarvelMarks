@@ -1,3 +1,7 @@
+a {
+	color: black !important;
+}
+
 .pagination a:link {
 	color: black !important;
 }
