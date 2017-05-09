@@ -36,7 +36,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="css/home.css"/>
+    <link rel="stylesheet" type="text/css" href="home.css"/>
 
 	  <!-- Custom JavaScript -->
     <script src="vendor/html2canvas.js" type="text/javascript"></script>
@@ -72,7 +72,7 @@
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
             <li>
-              <a href="#" data-toggle="modal" data-target="#addURLModal">Add URL</a>
+              <a href="#" data-toggle="modal" data-target="#addURLModal">Add Website</a>
             </li>
 						<li>
 							<a href="logout.php">Logout</a>
@@ -126,7 +126,8 @@
         while ($site_row = $site_result->fetch_assoc())
         {
           echo '<div class="col-md-3 portfolio-item">';
-          echo '<a href="'.$site_row['url'].'"><img class="img-responsive" src="js/screenshot.png" alt="http://placehold.it/750x450"></a>';
+          echo '<a href="'.$site_row['url'].'"><img class="img-responsive" src="https://www.havefunteaching.com/wp-content/uploads/2013/07/letter-m-video.png"  width="750" height="450"
+          alt="http://placehold.it/750x450"></a>';
 
           //code to insert the bookmarked page's title under the thumbnail
           echo '</br>';
@@ -180,17 +181,6 @@
   			// 	</div>
   			// </div>
   			// <!-- /.row -->
-
-    //     echo
-    //     '<script src="js/html2canvas.js" type="text/javascript"></script>',
-    //     '<script src="js/marvelmarks.js" type="text/javascript"></script>',
-    //     $thumbnail = 'getScreenshot()',
-    //     '<div class="col-md-3 portfolio-item">'
-    //       '<a href="#">'
-    //         '<img class="img-responsive" src="http://placehold.it/750x450" alt="">'
-    //       '</a>'
-    //     '</div>'
-    //     ;
         ?>
         <hr>
 

@@ -13,6 +13,7 @@ A simple password protected, multi-user website that stores user web bookmarks i
 ### Todo
 Important:
  - Encrypt all stored user bookmark URLs.
+ - Add support for deleting user bookmarks.
  - Regenerate stored hash of user password upon login.
  - Send password reset requests to listed user email.
  - Logically separate all project files into folders.
