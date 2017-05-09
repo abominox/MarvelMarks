@@ -50,39 +50,38 @@
 		$username = $_SESSION['username'];
 	}
 
-	//create connection to db to retrieve user bookmarks later
-	$hostname = "localhost";
-	$dbloginusername = "root";
-	$dbloginpassword = "replacepass2";
+  //create connection to db to retrieve user bookmarks later
+  $hostname = "localhost";
+  $dbloginusername = "root";
+  $dbloginpassword = "replacepass2";
 
-	$conn = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword", "MarvelMarks")
+  $link = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword", "MarvelMarks")
   or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
 
-  // $result = $conn->query($query);
-  $result_count = 0;
+  $id_query = "SELECT id FROM Users WHERE username = '$username'";
+  $id_result = $link->query($id_query);
+  $id_row = $id_result->fetch_assoc();
+  $user_id = $id_row['id'];
 
-  //retrieve user bookmarks, create boxes, create site thumbnails in boxes
-  $user_id = mysqli_fetch_assoc(mysqli_query($conn, "SELECT id FROM Users WHERE username = '$username'"));
+  $site_query = "SELECT * FROM URL WHERE id = '$user_id' ORDER BY `URL`.`dateAdded` DESC";
 
-  $query = "SELECT * FROM URL WHERE id = 7 ORDER BY `URL`.`dateAdded` DESC";
-
-  $result = $conn->query($query);
-  if ($result->num_rows > 0)
+  $site_result = $link->query($site_query);
+  if ($site_result->num_rows > 0)
   {
-    while ($row = $result->fetch_assoc($query));
+    while ($site_row = $site_result->fetch_assoc())
     {
-      echo $row["url"];
+      echo $site_row['id'];
+      echo $site_row['url'];
+
       echo '<div class="row">';
       echo '<div class="col-md-3 portfolio-item">';
-      echo "<a href=" . $row["url"] . ">TEST LINK</a>";
-
-      echo $username;
-      echo $user_id;
-      echo '<a href=" . $row["url"] . "><img class="img-responsive" src="http://xiostorage.com/wp-content/uploads/2015/10/test.png" alt="http://placehold.it/750x450"></a>';
+      echo '<a href="'.$row['url'].'"><img class="img-responsive" src="http://xiostorage.com/wp-content/uploads/2015/10/test.png" alt="http://placehold.it/750x450"></a>';
       echo '</div>';
       echo '</div>';
 
       $result_count++;
+    }
+  }
 
       //code to get the title of the webpage
       // $urlContents = file_get_contents($url);
