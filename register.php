@@ -8,24 +8,31 @@
 
 	if ($submit)
 	{
-		if ($username && $password && $repeatpassword && $email)
+		if ($username && $password && $repeatpassword && $email && $repeat_email)
 		{
-
+			if ($email  != $repeat_email)
+			{
+				echo "Please make sure your email addresses match.";
+				die();
+			}
 			if ($password == $repeatpassword)
 			{
 				if (strlen($username) > 25)
 				{
 					echo "Length of username must not exceed 25 characters!";
+					die();
 				}
 				if (strlen($email) > 50)
 				{
 					echo "Length of email address must not exceed 50 characters!";
+					die();
 				}
 				else
 				{
 					if (strlen($password) > 25 || strlen($password) < 6)
 					{
 						echo "Password must be between 6 and 25 characters!";
+						die();
 					}
 					else
 					{
@@ -33,14 +40,13 @@
 						$hostname = "localhost";
 						$dbloginusername = "root";
 						$dbloginpassword = "replacepass2";
-						$connect = mysqli_connect("$hostname", "$dbloginusername", "$dbloginpassword","MarvelMarks") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-					//	mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
-					//	mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks!");
-						$search = "SELECT username FROM Users WHERE username = '$username'";
-						$namecheck = mysqli_query($connect, $search);
+
+						mysql_connect("$hostname", "$dbloginusername", "$dbloginpassword") or die("Could not connect to MySQL database at address " . $hostname . " using provided login credentials!");
+						mysql_select_db("MarvelMarks") or die("Could not find specified database MarvelMarks!");
+
 						//ensure entered username does not already exist in db
-					//	$namecheck = mysql_query("SELECT username FROM Users WHERE username = '$username'");
-						$count = mysqli_num_rows($namecheck);
+						$namecheck = mysql_query("SELECT username FROM Users WHERE username = '$username'");
+						$count = mysql_num_rows($namecheck);
 						if ($count > 0)
 						{
 							die("An account with this username already exists, please enter a new username.");
@@ -50,7 +56,7 @@
 						$password = password_hash($password, PASSWORD_DEFAULT);
 
 						//send data to db
-						$query = mysqli_query($conn,"INSERT INTO Users (id, username, password, email, dateRegistered) VALUES ('', '$username','$password', '$email', now())");
+						$query = mysql_query("INSERT INTO Users (id, username, password, email, dateRegistered) VALUES ('', '$username','$password', '$email', now())");
 
 						if ($query)
 						{

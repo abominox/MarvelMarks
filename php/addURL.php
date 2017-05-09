@@ -18,7 +18,7 @@
 	$username = $_SESSION['username'];
 
 	$query = mysql_query("SELECT id FROM Users WHERE username = '$username'");
-	$row = mysql_fetch_assoc($query_1);
+	$row = mysql_fetch_assoc($query);
 	$user_id = $row['id'];
 
 	//encrypt entered URL
