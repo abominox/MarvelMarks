@@ -7,7 +7,6 @@ A simple password protected, multi-user website that stores user web bookmarks i
  - MySQL
  - PHP 5.5
  - HTML2Canvas
- - PHP 5.5+
  - Apache 2.2
 
 ### Todo
