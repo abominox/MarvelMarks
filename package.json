@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/abominox/MarvelMarks/issues"
   },
-  "homepage": "https://github.com/abominox/MarvelMarks#readme"
+  "homepage": "https://github.com/abominox/MarvelMarks#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
