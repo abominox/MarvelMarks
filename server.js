@@ -1,26 +1,23 @@
 const express = require('express')
+const fs = require('fs')
+const https = require('https')
+const passport = require('passport')
+
 const app = express()
+app.use(express.urlencoded({
+  extended: true
+}))
+
+require('./routes.js')(app)
 
 app.use(express.static('public'))
 
-app.get('/:var(login.html)?', (request, response) => {
-  response.sendFile('public/html/login.html', {root: __dirname })
-  console.log(request.connection.remoteAddress)
-  }
-)
+// Init Server (HTTPS)
+server = https.createServer({
+  key: fs.readFileSync('./misc/marvelmarks.key'),
+  cert: fs.readFileSync('./misc/marvelmarks.cert')
+}, app)
 
-app.get('/home.html', (request, response) => {
-  response.sendFile('public/html/home.html', {root: __dirname })
-  console.log(request.connection.remoteAddress)
-  }
-)
-
-app.listen(3000, '0.0.0.0', (err) => {
-  if (err) {
-    return console.log('something bad happened', err)
-  }
-
-  //console.log(`server is listening on ${port}`)
-  console.log('Server listening on port 3000')
-  }
-)
+server.listen(3000, '0.0.0.0', () => {
+  console.log('App now listening on port 3000!')
+})

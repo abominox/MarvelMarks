@@ -1,3 +1,9 @@
+### Misc
+vendor/
+misc/
+.env
+npm-shrinkwrap.json
+
 ### Node JS
 
 # Logs
